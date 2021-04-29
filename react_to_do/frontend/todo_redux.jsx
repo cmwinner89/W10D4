@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {receiveTodo, receiveTodos} from './actions/todo_actions'
+import {receiveTodo, receiveTodos, removeTodo} from './actions/todo_actions'
 import configureStore from './store/store'
 
 
@@ -11,5 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const store = configureStore();
     window.store = store;
     window.receiveTodo = receiveTodo;
+    window.removeTodo = removeTodo;
     window.receiveTodos = receiveTodos;
 })

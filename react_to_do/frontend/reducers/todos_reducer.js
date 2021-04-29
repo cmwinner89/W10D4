@@ -27,10 +27,12 @@ const todosReducer = (state = initialState, action) => {
             });
             return newerState;
         case RECEIVE_TODO:
-            nextState[action.todo.id] = action.todo;
-            return nextState;
+            return nextState[action.todo.id] = action.todo;
         case REMOVE_TODO: 
-            return nextState.slice([action.todo.id]);
+            let arr = Object.entries(nextState);
+            let newArr = arr.map(item => item !== action.todo.id);
+            let newestState = Object.create(newArr);
+            return newestState;
         default:
             return state;
     }
