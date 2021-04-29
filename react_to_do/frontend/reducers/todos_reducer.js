@@ -29,10 +29,12 @@ const todosReducer = (state = initialState, action) => {
         case RECEIVE_TODO:
             return nextState[action.todo.id] = action.todo;
         case REMOVE_TODO: 
-            let arr = Object.entries(nextState);
-            let newArr = arr.map(item => item !== action.todo.id);
-            let newestState = Object.create(newArr);
-            return newestState;
+            // let arr = Object.entries(nextState);
+            // let newArr = arr.map(item => item !== action.todo.id);
+            // let newestState = Object.create(newArr);
+            // return newestState;
+            delete nextState[action.todo.id];
+            return nextState;
         default:
             return state;
     }
