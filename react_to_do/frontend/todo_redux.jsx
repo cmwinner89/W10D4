@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {receiveTodo, receiveTodos, removeTodo} from './actions/todo_actions'
-import {receiveStep, receiveSteps, removeStep} from './actions/step_actions'
-import configureStore from './store/store'
+import {receiveTodo, receiveTodos, removeTodo} from './actions/todo_actions';
+import {receiveStep, receiveSteps, removeStep} from './actions/step_actions';
+import configureStore from './store/store';
+import Root from './components/root';
+import {allTodos} from './reducers/selector';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const root = document.getElementById("root");
-    const test = <h1>This is our test</h1>
-
-    ReactDOM.render(test, root)
-    
+    const content = document.getElementById("content");
+    // const test = <h1>This is our test</h1>
     const store = configureStore();
+
+    ReactDOM.render(<Root store={store}/>, content)
+    
 
     window.store = store;
 
@@ -22,4 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.receiveStep = receiveStep;
     window.receiveSteps = receiveSteps;
     window.removeStep = removeStep;
+
+    window.allTodos = allTodos;
 })
