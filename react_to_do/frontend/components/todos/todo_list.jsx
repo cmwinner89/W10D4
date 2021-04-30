@@ -1,5 +1,8 @@
 import React from 'react';
+import { receiveTodos } from '../../actions/todo_actions';
 import {allTodos} from '../../reducers/selector';
+import TodoForm from './todo_form';
+import {TodoListItem} from './todo_list_item';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -11,11 +14,11 @@ class TodoList extends React.Component {
             <div>
                 <ul>
                     {this.props.todos.map((todo) => {
-                        return(<li key={todo.id}>
-                            {todo.title}
-                        </li>
-                    )})}
+                        return(<TodoListItem todo={todo} />
+                    )})};
                 </ul>
+
+                <TodoForm receiveTodo={this.props.receiveTodo}/>
             </div>
         )
     };
